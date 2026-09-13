@@ -33,7 +33,7 @@ int main()
     cout<<"Bytes reservados: "<<tableBytes<<endl;
 
     cout<<"locatIndexPiece: "<<locateInitialBitPiece(0,0)<<endl;
-    cout<<"locatebyte: "<<getPiece(0,0)<<endl;
+    cout<<"locatebyte: "<<getPiece(0,1)<<endl;
 
 
     freeBoard();

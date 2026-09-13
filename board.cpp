@@ -1,5 +1,5 @@
 #include "board.h"
-
+#include <bitset>
 // borrar
 #include <iostream>
 using namespace std;
@@ -42,8 +42,8 @@ int getPiece(int row, int column)
     int initialBit = locateInitialBitPiece(row,column);
     int associatedByte = initialBit/8;
     int bitInBytePosition= initialBit%8;
-    cout<<"byte de la board : "<<(int)table[associatedByte];
-
-    return 0;
+    char piece = (table[associatedByte] >> bitInBytePosition) & 0b00000111;
+    // cout << bitset<8>(table[associatedByte]) << endl;
+    return piece;
 }
 
