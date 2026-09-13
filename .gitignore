@@ -1,0 +1,36 @@
+# Compilaciones
+build/
+build-*/
+*.o
+*.obj
+*.exe
+*.dll
+*.a
+*.so
+
+# Qt Creator / Qt
+*.user
+*.user.*
+.qtcreator/
+CMakeLists.txt.user*
+*.autosave
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+Makefile*
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+.cmake/
+
+# Editores / SO
+.vscode/
+.idea/
+.cache/
+Thumbs.db
+desktop.ini
+*~
