@@ -1,8 +1,7 @@
 #include <iostream>
+#include "board.h"
 
 using namespace std;
-
-const short int TamanoFicha = 3;
 
 int main()
 {
@@ -28,16 +27,14 @@ int main()
         cin>>columns;
     }
 
-    int bits = TamanoFicha*rows*columns;
-    int bytes = (bits % 8 == 0) ? bits / 8 : bits / 8 + 1;
+    createBoard(rows, columns);
 
-    unsigned char* table = nullptr;
+    cout<<endl;
+    cout<<"Bytes reservados: "<<tableBytes<<endl;
 
-    table = new unsigned char[bytes]();
+    cout << locatePiece(2, 3) << endl;
 
-
-    delete[] table;
-    table = nullptr;
+    freeBoard();
 
     return 0;
 }
