@@ -1,5 +1,10 @@
 #include "board.h"
 
+// borrar
+#include <iostream>
+using namespace std;
+
+
 unsigned char* table = nullptr;
 int tableRows = 0;
 int tableColumns = 0;
@@ -25,10 +30,20 @@ void freeBoard()
     tableBytes = 0;
 }
 
-int locatePiece(int row,int column)
+int locateInitialBitPiece(int row,int column)
 {
     int pieceIndex = row*tableColumns + column;
     int initialBit=pieceIndex*TamanoFicha;
     return initialBit;
+}
+
+int getPiece(int row, int column)
+{
+    int initialBit = locateInitialBitPiece(row,column);
+    int associatedByte = initialBit/8;
+    int bitInBytePosition= initialBit%8;
+    cout<<"byte de la board : "<<(int)table[associatedByte];
+
+    return 0;
 }
 

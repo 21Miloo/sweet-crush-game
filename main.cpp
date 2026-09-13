@@ -28,11 +28,13 @@ int main()
     }
 
     createBoard(rows, columns);
-
+    table[0] = 0b10101100;
     cout<<endl;
     cout<<"Bytes reservados: "<<tableBytes<<endl;
 
-    cout << locatePiece(2, 3) << endl;
+    cout<<"locatIndexPiece: "<<locateInitialBitPiece(0,0)<<endl;
+    cout<<"locatebyte: "<<getPiece(0,0)<<endl;
+
 
     freeBoard();
 

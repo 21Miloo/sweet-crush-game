@@ -12,6 +12,9 @@ void createBoard(int rows, int columns);
 
 void freeBoard();
 
-int locatePiece(int row,int column);
+int locateInitialBitPiece(int row,int column);
+
+int getPiece(int row, int column);
+
 
 #endif // BOARD_H
