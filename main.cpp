@@ -38,12 +38,15 @@ int readInt(const string& prompt, int min, int max){
 
 int main()
 {
+    int option = readInt("Escoge una opcion: ", 0, 10);
     const int maxDimension = 50;
 
     cout<<"Cuales son las dimensiones del tablero: "<<endl<<endl;
 
     int rows = readInt("Ingresa el numero de filas: ", 1, maxDimension);
     int columns = readInt("Ingresa el numero de columnas: ", 1, maxDimension);
+
+
 
     createBoard(rows, columns);
 
@@ -53,6 +56,18 @@ int main()
     cout << locatePiece(2, 3) << endl;
 
     freeBoard();
+
+
+    do{
+
+        cout << endl;
+
+
+
+
+    }while(option !=0);
+
+
 
     return 0;
 }
