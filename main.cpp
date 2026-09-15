@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>   // srand, rand
+#include <ctime>     // time
 #include "board.h"
 
 using namespace std;
@@ -27,14 +29,19 @@ int main()
         cin>>columns;
     }
 
+    srand(time(0));
+
     createBoard(rows, columns);
-    table[0] = 0b10101100;
+    fillRandom();
+
     cout<<endl;
-    cout<<"Bytes reservados: "<<tableBytes<<endl;
 
-    cout<<"locatIndexPiece: "<<locateInitialBitPiece(0,0)<<endl;
-    cout<<"locatebyte: "<<getPiece(0,1)<<endl;
-
+    for (int f = 0; f < tableRows; f++) {
+        for (int c = 0; c < tableColumns; c++) {
+            cout<<getPiece(f, c)<<" ";
+        }
+        cout<<endl;
+    }
 
     freeBoard();
 

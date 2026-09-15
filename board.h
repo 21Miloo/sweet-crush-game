@@ -16,5 +16,8 @@ int locateInitialBitPiece(int row,int column);
 
 int getPiece(int row, int column);
 
+void setPiece(int row, int column, int value);
+
+void fillRandom();
 
 #endif // BOARD_H
