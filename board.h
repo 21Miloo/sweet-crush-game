@@ -7,6 +7,7 @@ extern unsigned char* table;
 extern int tableRows;
 extern int tableColumns;
 extern int tableBytes;
+extern int tableCapacity;
 
 void createBoard(int rows, int columns);
 
@@ -22,5 +23,7 @@ void fillRandom();
 
 void removePiece(int row, int column);
 
+int neededbytes(int rows, int columns);
 
+void resizeMemory(int rows, int columns);
 #endif // BOARD_H

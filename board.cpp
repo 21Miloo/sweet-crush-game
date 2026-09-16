@@ -1,8 +1,5 @@
 #include "board.h"
-#include <cstdlib>   // rand
-#include <bitset>
-// borrar
-#include <iostream>
+#include <cstdlib>
 using namespace std;
 
 
@@ -10,16 +7,16 @@ unsigned char* table = nullptr;
 int tableRows = 0;
 int tableColumns = 0;
 int tableBytes = 0;
-
+int tableCapacity = 0;
 void createBoard(int rows, int columns)
 {
     tableRows = rows;
     tableColumns = columns;
 
-    int bits = TamanoFicha*rows*columns;
-    tableBytes = (bits % 8 == 0) ? bits / 8 : bits / 8 + 1;
+    tableBytes = neededbytes(tableRows,tableColumns);
 
     table = new unsigned char[tableBytes]();
+    tableCapacity = tableBytes;
 }
 
 void freeBoard()
@@ -29,6 +26,7 @@ void freeBoard()
     tableRows = 0;
     tableColumns = 0;
     tableBytes = 0;
+    tableCapacity = 0;
 }
 
 int locateInitialBitPiece(int row,int column)
@@ -93,4 +91,37 @@ void removePiece(int row, int column){
     setPiece(row,column,6);
 }
 
+
+int neededbytes(int rows, int columns){
+    int bits = TamanoFicha*rows*columns;
+    int bytes = (bits % 8 == 0) ? bits / 8 : bits / 8 + 1;
+    return bytes;
+}
+
+void resizeMemory(int rows, int columns)
+{
+    int bytesNeeded = neededbytes(rows, columns);
+
+    bool mustReallocate = (bytesNeeded > tableCapacity) || (bytesNeeded * 100 < tableCapacity * 65);
+
+    if (mustReallocate)
+    {
+        unsigned char* newTable = new unsigned char[bytesNeeded]();
+
+        int bytesToCopy = (bytesNeeded < tableCapacity) ? bytesNeeded : tableCapacity;
+
+        for (int i = 0; i < bytesToCopy; i++)
+        {
+            newTable[i] = table[i];
+        }
+
+        delete[] table;
+        table = newTable;
+        tableCapacity = bytesNeeded;
+    }
+
+    tableRows = rows;
+    tableColumns = columns;
+    tableBytes = bytesNeeded;
+}
 

@@ -34,6 +34,8 @@ int main()
     createBoard(rows, columns);
     fillRandom();
 
+    tableCapacity = tableBytes;
+
     cout<<endl;
 
     for (int f = 0; f < tableRows; f++) {
