@@ -89,4 +89,8 @@ void fillRandom(){
     }
 }
 
+void removePiece(int row, int column){
+    setPiece(row,column,6);
+}
+
 

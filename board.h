@@ -20,4 +20,7 @@ void setPiece(int row, int column, int value);
 
 void fillRandom();
 
+void removePiece(int row, int column);
+
+
 #endif // BOARD_H
