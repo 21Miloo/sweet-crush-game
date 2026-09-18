@@ -15,6 +15,8 @@ int getPiece(int row, int col){
 
 // Imprime un numero ocupando siempre 'width' caracteres, alineado a la derecha.
 // Sirve para que las columnas queden cuadradas aunque los numeros tengan 1 o 2 cifras.
+
+//Funcion para alinear el tablero -------------------------------------------------------------------
 void printPadded(int value, int width){
     int digits = 1;
     int n = value;
@@ -25,6 +27,8 @@ void printPadded(int value, int width){
     }
     cout << value;
 }
+
+// -----------------------------------------------------------------------------------------------------
 
 
 // El tablero en formato fichas. Las filas y columnas se numeran desde 1,
