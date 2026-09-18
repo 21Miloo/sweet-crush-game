@@ -34,7 +34,6 @@ int main()
     createBoard(rows, columns);
     fillRandom();
 
-    tableCapacity = tableBytes;
 
     cout<<endl;
 
@@ -46,18 +45,8 @@ int main()
     }
     cout<<endl;
 
+    applyGravity();
 
-    removePiece(0,2);
-
-    cout<<endl;
-
-
-    for (int f = 0; f < tableRows; f++) {
-        for (int c = 0; c < tableColumns; c++) {
-            cout<<getPiece(f, c)<<" ";
-        }
-        cout<<endl;
-    }
 
     freeBoard();
 

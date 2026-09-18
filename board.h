@@ -26,4 +26,6 @@ void removePiece(int row, int column);
 int neededbytes(int rows, int columns);
 
 void resizeMemory(int rows, int columns);
+
+void applyGravity();
 #endif // BOARD_H

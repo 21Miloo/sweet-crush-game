@@ -1,5 +1,7 @@
 #include "board.h"
 #include <cstdlib>
+#include <iostream>
+
 using namespace std;
 
 
@@ -125,3 +127,26 @@ void resizeMemory(int rows, int columns)
     tableBytes = bytesNeeded;
 }
 
+void applyGravity()
+{
+    for (int column = 0; column < tableColumns; column++)
+    {
+        for (int row = tableRows - 1; row >= 0; row--)
+        {
+            if (getPiece(row, column) != 6) continue;
+
+            int rowWithPiece = row - 1;
+            while (rowWithPiece >= 0 && getPiece(rowWithPiece, column) == 6){
+                rowWithPiece--;
+            }
+
+            if (rowWithPiece >= 0){
+                setPiece(row, column, getPiece(rowWithPiece, column));
+                setPiece(rowWithPiece, column, 6);
+            }
+            else{
+                setPiece(row, column, rand() % 6);
+            }
+        }
+    }
+}
