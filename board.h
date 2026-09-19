@@ -14,4 +14,29 @@ void freeBoard();
 
 int locatePiece(int row,int column);
 
+int locateInitialBitPiece(int row,int column);
+
+int getPiece(int row, int column);
+
+void setPiece(int row, int column, int value);
+
+void fillRandom();
+
+void removePiece(int row, int column);
+
+int neededbytes(int rows, int columns);
+
+void resizeMemory(int rows, int columns);
+
+void applyGravity();
+
+void addRow(int pos);
+
+void addColumn(int pos);
+
+void removeRow(int pos);
+
+void removeColumn(int pos);
+
+
 #endif // BOARD_H
