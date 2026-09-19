@@ -8,10 +8,13 @@ using namespace std;
 const char symbols[] = {'A', 'B', 'C', 'D', 'E', 'F', '.', '?'};
 
 
-// Funcion provisional para probar pintado del tablero
+// ===== TEMPORAL: borrar cuando se mergee el board.cpp de Camilo =====
+// Tablero de mentira para poder ver la vista sin depender de board.
 int getPiece(int row, int col){
     return (row + col) % 6;
 }
+// ====================================================================
+
 
 // Imprime un numero ocupando siempre 'width' caracteres, alineado a la derecha.
 // Sirve para que las columnas queden cuadradas aunque los numeros tengan 1 o 2 cifras.
