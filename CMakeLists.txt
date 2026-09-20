@@ -7,7 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(sweet-crush-game main.cpp
     board.h
-    board.cpp)
+    board.cpp
+    view.h
+    view.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS sweet-crush-game

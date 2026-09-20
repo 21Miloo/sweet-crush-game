@@ -29,5 +29,12 @@ void resizeMemory(int rows, int columns);
 
 void applyGravity();
 
-void removeRow(int rowToRemove);
+void addRow(int pos);
+
+void addColumn(int pos);
+
+void removeRow(int pos);
+
+void removeColumn(int pos);
+
 #endif // BOARD_H
