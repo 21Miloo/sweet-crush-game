@@ -150,3 +150,20 @@ void applyGravity()
         }
     }
 }
+
+
+void removeRow(int rowToRemove)
+{
+    if (rowToRemove < 0 || rowToRemove >= tableRows) return;   // fuera de rango
+    if (tableRows <= 1) return;                                // no dejar el tablero sin filas
+
+    for (int row = rowToRemove; row < tableRows - 1; row++)
+    {
+        for (int column = 0; column < tableColumns; column++)
+        {
+            setPiece(row, column, getPiece(row + 1, column));
+        }
+    }
+
+    resizeMemory(tableRows - 1, tableColumns);
+}
