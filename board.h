@@ -28,4 +28,13 @@ int neededbytes(int rows, int columns);
 void resizeMemory(int rows, int columns);
 
 void applyGravity();
+
+void addRow(int pos);
+
+void addColumn(int pos);
+
+void removeRow(int pos);
+
+void removeColumn(int pos);
+
 #endif // BOARD_H
