@@ -1,5 +1,8 @@
 #include <iostream>
 #include "board.h"
+#include <cstdlib>   // srand, rand
+#include <ctime>     // time
+#include "view.h"
 
 using namespace std;
 
@@ -42,34 +45,6 @@ int readInt(const char* prompt, int min, int max){
     return num;
 }
 
-
-// Imprime las opciones disponibles durante la partida.
-void showMenu(){
-    cout << endl;
-    cout << "------------ MENU ------------" << endl;
-    cout << " 1. Eliminar una ficha"        << endl;
-    cout << " 2. Agregar una fila"          << endl;
-    cout << " 3. Eliminar una fila"         << endl;
-    cout << " 4. Agregar una columna"       << endl;
-    cout << " 5. Eliminar una columna"      << endl;
-    cout << " 6. Mostrar el tablero"        << endl;
-    cout << " 0. Salir"                     << endl;
-    cout << "------------------------------" << endl;
-}
-
-
-// Estado del juego que el enunciado exige mostrar luego de cada jugada.
-void showState(int removals, int piecesRemoved, int matches, int cascades, int score){
-    cout << endl;
-    cout << "Dimensiones del tablero   : " << tableRows << " x " << tableColumns << endl;
-    cout << "Eliminaciones del usuario : " << removals << endl;
-    cout << "Fichas eliminadas en total: " << piecesRemoved << endl;
-    cout << "Combinaciones detectadas  : " << matches << endl;
-    cout << "Cascadas de esta jugada   : " << cascades << endl;
-    cout << "Puntuacion                : " << score << endl;
-}
-
-
 int main()
 {
     const int maxDimension = 50;
@@ -86,7 +61,9 @@ int main()
     int rows = readInt("Ingresa el numero de filas: ", 1, maxDimension);
     int columns = readInt("Ingresa el numero de columnas: ", 1, maxDimension);
 
+    srand(time(0));
     createBoard(rows, columns);
+    fillRandom();
     // TODO: llenar el tablero con fichas aleatorias (distribucion uniforme)
 
 
@@ -95,6 +72,7 @@ int main()
     do {
         showMenu();
         option = readInt("Escoge una opcion: ", 0, 6);
+        cout << endl;
 
         switch (option) {
 
@@ -136,8 +114,9 @@ int main()
         }
 
         case 6: {   // Mostrar el tablero
-            cout << "[pendiente] mostrar el tablero en formato fichas y en formato binario" << endl;
-            // implementar logica
+            showBoard(); // Muestra tablero normal
+            cout << endl;
+            showBoardBinary(); // Muestra tablero en Binario
             break;
         }
 
