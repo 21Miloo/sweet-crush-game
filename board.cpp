@@ -155,7 +155,7 @@ void applyGravity()
 void removeRow(int rowToRemove)
 {
     if (rowToRemove < 0 || rowToRemove >= tableRows) return;   // fuera de rango
-    if (tableRows <= 1) return;                                // no dejar el tablero sin filas
+    if (tableRows <= 1) return;                                // no podemos dejamos el tablero sin filas
 
     for (int row = rowToRemove; row < tableRows - 1; row++)
     {
@@ -166,4 +166,103 @@ void removeRow(int rowToRemove)
     }
 
     resizeMemory(tableRows - 1, tableColumns);
+}
+
+
+void addRow(int pos){
+    if (pos < 0 || pos > tableRows) return;
+
+    resizeMemory(tableRows + 1, tableColumns);
+
+    for (int row = tableRows - 1; row > pos; row--)
+    {
+        for (int column = 0; column < tableColumns; column++)
+        {
+            setPiece(row, column, getPiece(row - 1, column));
+        }
+    }
+
+    for (int column = 0; column < tableColumns; column++)
+    {
+        setPiece(pos, column, rand() % 6);
+    }
+}
+
+
+int getPieceAt(int index)
+{
+    int initialBit = index * TamanoFicha;
+    int associatedByte = initialBit / 8;
+    int bitInBytePosition = initialBit % 8;
+
+    int piece = (table[associatedByte] >> bitInBytePosition) & 0b111;
+
+    if (bitInBytePosition > 5)
+    {
+        int bitsThatFit = 8 - bitInBytePosition;
+        piece = piece | ((table[associatedByte + 1] << bitsThatFit) & 0b111);
+    }
+    return piece;
+}
+
+void setPieceAt(int index, int value)
+{
+    int initialBit = index * TamanoFicha;
+    int associatedByte = initialBit / 8;
+    int bitInBytePosition = initialBit % 8;
+
+    value = value & 0b111;
+    int mask = 0b111 << bitInBytePosition;
+    table[associatedByte] = (table[associatedByte] & ~mask) | (value << bitInBytePosition);
+
+    if (bitInBytePosition > 5)
+    {
+        int bitsThatFit = 8 - bitInBytePosition;
+        int mask2 = 0b111 >> bitsThatFit;
+        table[associatedByte + 1] = (table[associatedByte + 1] & ~mask2) | (value >> bitsThatFit);
+    }
+}
+
+void removeColumn(int columnToRemove)
+{
+    if (columnToRemove < 0 || columnToRemove >= tableColumns) return;
+    if (tableColumns <= 1) return;
+
+    int newIndex = 0;
+    for (int row = 0; row < tableRows; row++)
+    {
+        for (int column = 0; column < tableColumns; column++)
+        {
+            if (column == columnToRemove) continue;
+            setPieceAt(newIndex, getPieceAt(row * tableColumns + column));
+            newIndex++;
+        }
+    }
+
+    resizeMemory(tableRows, tableColumns - 1);
+}
+
+void addColumn(int pos)
+{
+    if (pos < 0 || pos > tableColumns) return;
+
+    int oldColumns = tableColumns;
+    resizeMemory(tableRows, oldColumns + 1);      // sitio primero
+
+    for (int row = tableRows - 1; row >= 0; row--)          // hacia ATRAS
+    {
+        for (int column = tableColumns - 1; column >= 0; column--)
+        {
+            int newIndex = row * tableColumns + column;
+            if (column == pos)
+            {
+                setPieceAt(newIndex, rand() % 6);           // la columna nueva
+            }
+            else
+            {
+                int oldColumn = (column < pos) ? column : column - 1;
+                setPieceAt(newIndex, getPieceAt(row * oldColumns + oldColumn));
+            }
+        }
+    }
 }

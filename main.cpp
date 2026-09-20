@@ -64,8 +64,6 @@ int main()
     srand(time(0));
     createBoard(rows, columns);
     fillRandom();
-    // TODO: llenar el tablero con fichas aleatorias (distribucion uniforme)
-
 
     int option = -1;
 

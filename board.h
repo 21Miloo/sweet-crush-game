@@ -37,4 +37,8 @@ void removeRow(int pos);
 
 void removeColumn(int pos);
 
+int getPieceAt(int index);
+
+void setPieceAt(int index, int value);
+
 #endif // BOARD_H
