@@ -6,6 +6,10 @@ Juego de combinaciones hecho en C++. El tablero se guarda como una secuencia de
 bits, 3 bits por cada casilla, usando operadores a nivel de bits y memoria
 dinámica.
 
+## Arquitectura
+
+![Arquitectura del proyecto](img/arquitectura.jpeg)
+
 ## Cómo correrlo
 
 Abrir el `CMakeLists.txt` en Qt Creator, compilar y ejecutar.
