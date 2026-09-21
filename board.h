@@ -41,4 +41,6 @@ int getPieceAt(int index);
 
 void setPieceAt(int index, int value);
 
+int detectCombinations();
+
 #endif // BOARD_H

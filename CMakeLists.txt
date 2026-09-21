@@ -9,7 +9,9 @@ add_executable(sweet-crush-game main.cpp
     board.h
     board.cpp
     view.h
-    view.cpp)
+    view.cpp
+    game.h
+    game.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS sweet-crush-game
