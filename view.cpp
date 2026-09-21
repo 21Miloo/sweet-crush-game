@@ -3,7 +3,6 @@
 #include "board.h"
 
 using namespace std;
-// El tablero guarda un chorro de bits (unsigned char* table, 3 bits por ficha)
 
 const char symbols[] = {'A', 'B', 'C', 'D', 'E', 'F', '.', '?'};
 
@@ -22,11 +21,7 @@ void printPadded(int value, int width){
     cout << value;
 }
 
-// -----------------------------------------------------------------------------------------------------
 
-
-// El tablero en formato fichas. Las filas y columnas se numeran desde 1,
-// que es como las pide el menu; la conversion a indice (restar 1) la hace main.
 void showBoard(){
 
     // Encabezado con el numero de cada columna

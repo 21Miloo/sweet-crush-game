@@ -43,7 +43,6 @@ int detectCombinations()
     ensureMarks();
     int found = 0;
 
-    // ---- horizontal: ventana de 3 que se desliza por cada fila ----
     for (int row = 0; row < tableRows; row++)
     {
         for (int column = 0; column + 2 < tableColumns; column++)
@@ -58,12 +57,10 @@ int detectCombinations()
             markCell(row * tableColumns + column + 1);
             markCell(row * tableColumns + column + 2);
 
-            // solo cuenta si aqui EMPIEZA la racha
             if (column == 0 || getPiece(row, column - 1) != value) found++;
         }
     }
 
-    // ---- vertical: la misma ventana, pero hacia abajo ----
     for (int column = 0; column < tableColumns; column++)
     {
         for (int row = 0; row + 2 < tableRows; row++)
@@ -110,7 +107,7 @@ int processCascades(int& piecesRemoved, int& matches, int& score)
     while (true)
     {
         int found = detectCombinations();
-        if (found == 0) break;              // el tablero se estabilizo
+        if (found == 0) break;
 
         int removed = removeMarkedPieces();
 
