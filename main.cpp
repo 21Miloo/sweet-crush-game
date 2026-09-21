@@ -100,8 +100,14 @@ int main()
             break;
         }
 
+<<<<<<< Updated upstream
         case 4: {
             int column = readInt("Antes de que columna se inserta: ", 1, tableColumns + 1) - 1;    
+=======
+        case 4: {   // Agregar una columna
+            int column = readInt("Antes de que columna se inserta: ", 1, tableColumns + 1) - 1;
+            // implementar logica
+>>>>>>> Stashed changes
             addColumn(column);
             cascades = processCascades(piecesRemoved, matches, score);
             showBoard();
