@@ -74,7 +74,7 @@ int main()
             cascades = processCascades(piecesRemoved, matches, score);
             showBoard();
             cout << endl;
-            showBoardBinary();
+            // showBoardBinary();
 
             removals= removals + 1;
             break;
@@ -86,7 +86,7 @@ int main()
             cascades = processCascades(piecesRemoved, matches, score);
             showBoard();
             cout << endl;
-            showBoardBinary();
+            // showBoardBinary();
             break;
         }
 
@@ -96,7 +96,7 @@ int main()
             cascades = processCascades(piecesRemoved, matches, score);
             showBoard();
             cout << endl;
-            showBoardBinary();
+            // showBoardBinary();
             break;
         }
 
@@ -106,7 +106,7 @@ int main()
             cascades = processCascades(piecesRemoved, matches, score);
             showBoard();
             cout << endl;
-            showBoardBinary();
+            // showBoardBinary();
             break;
         }
 
@@ -116,7 +116,7 @@ int main()
             cascades = processCascades(piecesRemoved, matches, score);
             showBoard();
             cout << endl;
-            showBoardBinary();
+            // showBoardBinary();
             break;
         }
 
