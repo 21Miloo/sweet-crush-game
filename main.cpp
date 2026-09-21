@@ -75,25 +75,38 @@ int main()
         switch (option) {
 
         case 1: {   // Eliminar una ficha
-            int row = readInt("Fila de la ficha: ", 1, tableRows) - 1;
+            int row = readInt("Fila de la ficha: ", 1, tableRows) - 1; // Le restamos 1 por la correspondencia en el indice de un arreglo (Yo -> 1  C++ -> 0 / Yo -> 2, C++ -> 1)
             int column = readInt("Columna de la ficha: ", 1, tableColumns) - 1;
-            cout << "[pendiente] eliminar la ficha en (" << row << ", " << column << ")" << endl;
+
             // implementar logica de eliminar la ficha, detectar combinaciones, reorganizar y procesar cascadas
+            removePiece(row, column);
+            applyGravity();
+
+            showBoard(); // Muestra tablero normal
+            cout << endl;
+            showBoardBinary(); // Muestra tablero en Binario
+
             removals= removals + 1;
             break;
         }
 
         case 2: {   // Agregar una fila
             int row = readInt("Antes de que fila se inserta: ", 1, tableRows + 1) - 1;
-            cout << "[pendiente] agregar fila en la posicion " << row << endl;
             // implementar logica
+            addRow(row);
+            showBoard(); // Muestra tablero normal
+            cout << endl;
+            showBoardBinary(); // Muestra tablero en Binario
             break;
         }
 
         case 3: {   // Eliminar una fila
             int row = readInt("Que fila se elimina: ", 1, tableRows) - 1;
-            cout << "[pendiente] eliminar la fila " << row << endl;
             // implementar logica
+            removeRow(row);
+            showBoard(); // Muestra tablero normal
+            cout << endl;
+            showBoardBinary(); // Muestra tablero en Binario
             break;
         }
 
@@ -101,13 +114,20 @@ int main()
             int column = readInt("Antes de que columna se inserta: ", 1, tableColumns + 1) - 1;
             cout << "[pendiente] agregar columna en la posicion " << column << endl;
             // implementar logica
+            addColumn(column);
+            showBoard(); // Muestra tablero normal
+            cout << endl;
+            showBoardBinary(); // Muestra tablero en Binario
             break;
         }
 
         case 5: {   // Eliminar una columna
             int column = readInt("Que columna se elimina: ", 1, tableColumns) - 1;
-            cout << "[pendiente] eliminar la columna " << column << endl;
             // implementar logica
+            removeColumn(column);
+            showBoard(); // Muestra tablero normal
+            cout << endl;
+            showBoardBinary(); // Muestra tablero en Binario
             break;
         }
 
